@@ -16,13 +16,14 @@ inventory = {}
 fishs1 = ["pike", "carp", "Coral Trout", "Dufish", "Salmon", "King Gourge Whiting", "Break Sea Cod", "Blue Spotted Emporer", "Squid", "Puffer Fish", "Old Shoe", "Tuna", "Minuture shark!"]
 illigalfish = ["pufferfish", "sealion", "Barry...", "John", "CRAIG!!!!!"] # add some more lmaoooooo
 
+
 prices = {
     "pike": 10,
     "carp": 5,
     "Coral Trout": 15,
     "Dufish": 8,
     "Salmon": 12,
-    "King Gourge Whiting": 20,
+    "King Gourge Whiting": 40,
     "Break Sea Cod": 25,
     "Blue Spotted Emporer": 30,
     "Squid": 7,
@@ -31,6 +32,9 @@ prices = {
     "Tuna": 22,
     "Minuture shark!": 50
 }
+
+# Terrain Stuff
+
 
 
 # Laws should be dynamically loaded from stuff/laws.yaml eventually... but knowing me it will probbbably never happen :D
@@ -47,6 +51,7 @@ def policenew(offense):
     global arrested
     if offense not in laws:
         print("This offense doesn't exist!")
+        print("Me probbably screwed up some code...")
         return
     
     print("🚨 The Police Show Up!! 🚨")
@@ -325,6 +330,12 @@ def fineplayer(finevalue, reason):
         print(f"Money Updated: {player_money}")
 
 
+def bank():
+    print("You Went to the bank...")
+    print(f"You have ${player_money}!")
+
+
+
 
 
 
@@ -343,10 +354,3 @@ def runfunction():
         print("No such function!")
 
 
-
-
-
-
-### Police Thing: police(500, "farting", False)
-
-fishing()
