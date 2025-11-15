@@ -1,12 +1,20 @@
 import random
 import time
+from game import *
 
 devmode = True
 arrested = False
 player_money = 500
 player_inventory = []
 player_location = "outside"
+player_phoneopenable = True
 
+
+
+phone_numbers = { # More phone numbers should be added as you progress thru the game :D
+    "733419": "Bank",
+    "911183": "Car Dealership"
+}
 
 
 inventory = {}
@@ -32,8 +40,6 @@ prices = {
     "Tuna": 22,
     "Minuture shark!": 50
 }
-
-# Terrain Stuff
 
 
 
@@ -221,8 +227,25 @@ def fishing():
 
 
 
-def phone():
-    print("working on this hehehehe >:D")
+def phone(): #Gotta work on this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    global player_phoneopenable
+    if player_phoneopenable == True:
+        print("Phone Apps: [1]Call [2]Game Manual [3]Close")
+        appchoice = input("What Do You Use?: ")
+        if appchoice == "1":
+            call()
+        elif appchoice == "2":
+            gamemanual()
+        elif appchoice == "3":
+            start1() # This function is from game.py that just goes back to the main menu :D
+        else:
+            print("PICK A OPTION!! >:C")
+
+def call():
+    print("Work in progress :D")
+
+def gamemanual():
+    print("Work In Progress :D")
 
 
 
@@ -352,5 +375,92 @@ def runfunction():
         functions[input50]()  # call the function
     else:
         print("No such function!")
+
+
+
+
+
+
+
+### Vehicle Stuff:
+
+testvehicle = {
+    "Engine": "440HP V8",
+    "Transmission": "6 Speed Manual Transmission",
+    "LSD": "Locked Diff",
+    "Suspension": "Adjustable Coilovers",
+    "Brakes": "Brembo 6-Piston Front, 4-Piston Rear",
+    "Tires": "Michelin Pilot Sport 4S",
+    "Chassis": "Reinforced Tubular Frame",
+    "Fuel Tank": 70, # 70 as in 70L
+    "cargocapacity": 400
+}
+
+
+def load_cargo(vehicle, cargoname, cargospace):
+    if vehicle == currentvehicle 
+
+
+def vehicleshop():
+    print("Working on this...")
+
+
+def savegame():
+    try:
+        savefile = int(input("What Save File Would You Like To Use? (1-10): "))
+    except ValueError:
+        print("Please enter a number between 1 and 10!")
+        return savegame()  # restart if invalid
+
+    if 1 <= savefile <= 10:
+        filename = f"savegame{savefile}.txt"
+        try:
+            with open(filename, "w") as f:
+                f.write(f"money:{player_money}\n")
+                f.write(f"inventory:{inventory}\n")
+                f.write(f"location:{player_location}\n")
+                f.write(f"arrested:{arrested}\n")
+            print(f"Game saved to {filename}!")
+        except Exception as e:
+            print(f"Failed to save: {e}")
+    else:
+        print("Ded, try again")
+        savegame()
+
+
+def loadgame():
+    ### SHould let you pick a save game (1-10) and load it by setting the 
+
+
+### Multiplayer stuff:
+
+admins = ["FunnyTom777"] # should be... "better" :D
+server_owner = "FunnyTom777" # placeholder :D
+players = ["FunnyTom777"]
+ban_list = []
+
+
+
+def banplayer(sender, playername, reason):
+    if sender in admins == True:
+        ban_list.append(playername)
+        print("Player Banned...")
+    elif sender in admins == False:
+        print("you are not worthy of this power! >:D only magical creatures like FunnyTom777 are :D")
+    else:
+        error("somthing is wrong with the banplayer function... or somthing useing it...", False)
+
+def kickplayer(sender, playername):
+    if sender in admins == True:
+        print("")
+
+
+def setadmin(sender, newadmin):
+    if sender == server_owner:
+        admins.append(newadmin)
+        print(f"New Admin Added:{newadmin}")
+    elif sender not server_owner:
+        print("Ded, your not a server owner >:C")
+
 
 
